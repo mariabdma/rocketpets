@@ -1,5 +1,5 @@
 import { HeaderContainer, Logo, CartContainer } from "./styles";
-import { PiShoppingCartSimpleBold } from "react-icons/pi";
+import { GiShoppingCart } from "react-icons/gi";
 
 interface Props {
   cartItemCount: number;
@@ -11,7 +11,7 @@ export function Header({ cartItemCount, onCartClick }: Props) {
     <HeaderContainer>
       <Logo> rocketpets </Logo>
       <CartContainer onClick={onCartClick}>
-        <PiShoppingCartSimpleBold />
+        <GiShoppingCart />
         <p>{cartItemCount}</p>
       </CartContainer>
     </HeaderContainer>

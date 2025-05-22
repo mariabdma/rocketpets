@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
-import { Header } from "./components/Header";
+import { Header } from "./components";
+import { Home } from "./pages";
 
 function App() {
   const [cartVisible, setCartVisible] = useState(false);
@@ -12,7 +13,8 @@ function App() {
   return (
     <>
       <Header cartItemCount={3} onCartClick={toggleCart} />
-      {cartVisible && <div>🛒 Carrinho aberto aqui</div>}
+      <Home />
+      {cartVisible && <div>a</div>}
     </>
   );
 }
