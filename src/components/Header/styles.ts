@@ -18,7 +18,9 @@ export const CartContainer = styled.div`
   gap: 0.6rem;
   font-size: 1.4rem;
   font-weight: bold;
-  color: #2e2e2e;
+  font-family: "RetroFont", sans-serif;
+  color: #0000ee;
+  text-decoration: underline;
   cursor: pointer;
 
   transition: transform 0.1s ease-in-out;
