@@ -1,9 +1,18 @@
 import "./App.css";
+import { useState } from "react";
+import { Header } from "./components/Header";
 
 function App() {
+  const [cartVisible, setCartVisible] = useState(false);
+
+  const toggleCart = () => {
+    setCartVisible((prev) => !prev);
+  };
+
   return (
     <>
-      <h1> rocketpets </h1>
+      <Header cartItemCount={3} onCartClick={toggleCart} />
+      {cartVisible && <div>🛒 Carrinho aberto aqui</div>}
     </>
   );
 }
