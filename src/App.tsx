@@ -2,6 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import { Header } from "./components";
 import { Home } from "./pages";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [cartVisible, setCartVisible] = useState(false);
@@ -12,9 +14,13 @@ function App() {
 
   return (
     <>
-      <Header cartItemCount={3} onCartClick={toggleCart} />
-      <Home />
-      {cartVisible && <div>a</div>}
+      <ShoppingCartProvider>
+        <Header onCartClick={toggleCart} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          {cartVisible && <div>a</div>}
+        </Routes>
+      </ShoppingCartProvider>
     </>
   );
 }
