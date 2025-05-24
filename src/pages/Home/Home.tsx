@@ -1,17 +1,21 @@
-import { HomeContainer } from "./styles";
+import { HomeContainer, ConfirmationPopup } from "./styles";
+import { useState } from "react";
 import { pets } from "../../data/pets";
-import { PetCard } from "../../components";
+import { PetCard, CartModal } from "../../components";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 export function Home() {
+  const { isCartOpen } = useShoppingCart();
+  const [showConfirmation, setShowConfirmation] = useState(false);
   return (
     <HomeContainer>
       {pets.map((pet) => (
-        <PetCard
-          key={pet.id}
-          {...pet}
-          onAddToCart={() => console.log(`Adicionado: ${pet.name}`)}
-        />
+        <PetCard key={pet.id} {...pet} />
       ))}
+      {isCartOpen && <CartModal setShowConfirmation={setShowConfirmation} />}
+      {showConfirmation && (
+        <ConfirmationPopup>compra finalizada! *-*</ConfirmationPopup>
+      )}
     </HomeContainer>
   );
 }

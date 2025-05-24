@@ -12,7 +12,7 @@ import {
 import { GiShoppingCart } from "react-icons/gi";
 import type { Pet } from "../../data/pets";
 import { formatAge } from "../../utils/formatAge";
-import { useShoppingCart } from "../../context/ShoppingCartContext"; // adjust path as needed
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 type PetCardProps = Pet;
 

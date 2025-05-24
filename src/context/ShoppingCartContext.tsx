@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 
 type ShoppingCartProviderProps = {
@@ -10,7 +10,9 @@ type ShoppingCartContext = {
   removeFromCart: (id: number) => void;
   openCart: () => void;
   closeCart: () => void;
+  isCartOpen: boolean;
   cartPets: number[];
+  emptyCart: () => void;
 };
 
 const ShoppingCartContext = createContext({} as ShoppingCartContext);
@@ -20,10 +22,27 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
-  const [cartPets, setCartPets] = useState<number[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
-  const openCart = () => setIsOpen(true);
-  const closeCart = () => setIsOpen(false);
+  const [cartPets, setCartPets] = useState<number[]>(() => {
+    const saved = localStorage.getItem("rocketpets-cart");
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const emptyCart = () => setCartPets([]);
+  const openCart = () => setIsCartOpen(true);
+  const closeCart = () => setIsCartOpen(false);
+  useEffect(() => {
+    const savedCart = localStorage.getItem("rocketpets-cart");
+    if (savedCart) {
+      try {
+        setCartPets(JSON.parse(savedCart));
+      } catch (error) {
+        console.error("erro ao carregar carrinho:", error);
+      }
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("rocketpets-cart", JSON.stringify(cartPets));
+  }, [cartPets]);
   function addToCart(id: number) {
     setCartPets((curr) => {
       if (curr.includes(id)) return curr;
@@ -36,7 +55,15 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   return (
     <ShoppingCartContext.Provider
-      value={{ addToCart, removeFromCart, cartPets, openCart, closeCart }}
+      value={{
+        addToCart,
+        removeFromCart,
+        cartPets,
+        isCartOpen,
+        openCart,
+        closeCart,
+        emptyCart,
+      }}
     >
       {children}
     </ShoppingCartContext.Provider>
