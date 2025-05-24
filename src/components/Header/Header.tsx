@@ -1,18 +1,16 @@
 import { HeaderContainer, Logo, CartContainer } from "./styles";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { GiShoppingCart } from "react-icons/gi";
 
-interface Props {
-  cartItemCount: number;
-  onCartClick: () => void;
-}
+export function Header() {
+  const { cartPets, openCart } = useShoppingCart();
 
-export function Header({ cartItemCount, onCartClick }: Props) {
   return (
     <HeaderContainer>
       <Logo> rocketpets </Logo>
-      <CartContainer onClick={onCartClick}>
+      <CartContainer onClick={openCart}>
         <GiShoppingCart />
-        <p>{cartItemCount}</p>
+        <p>{cartPets.length}</p>
       </CartContainer>
     </HeaderContainer>
   );

@@ -1,4 +1,9 @@
 import styled from "styled-components";
+
+interface GenderTagProps {
+  gender: string;
+}
+
 export const CardContainer = styled.div`
   background-color: #ffffff;
   width: 27vw;
@@ -72,6 +77,21 @@ export const AddToCartButton = styled.button`
   }
 `;
 
+export const RemoveFromCartButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+  color: rgb(255, 0, 0);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    color: #551a8b;
+  }
+`;
+
 export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -79,4 +99,9 @@ export const DetailsContainer = styled.div`
   font-size: 1.2rem;
   line-height: 1.4;
   padding: 0.2rem 0;
+`;
+
+export const GenderTag = styled.span<GenderTagProps>`
+  font-weight: bold;
+  color: ${({ gender }) => (gender === "fêmea" ? "#f4a9bb" : "#4682b4")};
 `;
