@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CartContainer = styled.div`
+export const FilterContainer = styled.div`
   position: fixed;
   top: 0;
   right: 0;
@@ -22,7 +22,7 @@ export const TextContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const CloseCartButton = styled.button`
+export const CloseFilterButton = styled.button`
   background: none;
   font-size: 1.2rem;
   border: none;
@@ -35,7 +35,21 @@ export const CloseCartButton = styled.button`
   }
 `;
 
-export const FinishOrderButton = styled.button`
+export const ClearFilterButton = styled.button`
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: rgb(255, 0, 0);
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: "RetroFont", sans-serif;
+
+  &:hover {
+    color: #551a8b;
+  }
+`;
+
+export const ToggleFilterButton = styled.button`
   background: none;
   font-size: 1.2rem;
   border: none;
@@ -49,8 +63,22 @@ export const FinishOrderButton = styled.button`
   }
 `;
 
-export const CartTotalText = styled.p`
-  align-self: flex-end;
+interface SpeciesButtonProps {
+  selected: boolean;
+}
+
+export const SpeciesButton = styled.button<SpeciesButtonProps>`
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  border-radius: 12px;
+  background-color: ${({ selected }) => (selected ? "#add8e6" : "#f2f2f2")};
+  color: #2e2e2e;
+  border: none;
   font-size: 1rem;
+  cursor: pointer;
   font-family: "RetroFont", sans-serif;
+
+  &:hover {
+    background-color: ${({ selected }) => (selected ? "#90cce0" : "#e0e0e0")};
+  }
 `;
