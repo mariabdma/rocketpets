@@ -71,6 +71,6 @@ src/
 ## Contato
 Email: mariabdma@gmail.com
 
-LinkedIn: [linkedin.com/in/seu-usuario](https://linkedin.com/in/seu-usuario)
+LinkedIn: [linkedin.com/in/mariabdma](https://linkedin.com/in/seu-usuario)
 
 GitHub: [github.com/mariabdma](github.com/mariabdma)
