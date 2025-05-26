@@ -31,16 +31,6 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const openCart = () => setIsCartOpen(true);
   const closeCart = () => setIsCartOpen(false);
   useEffect(() => {
-    const savedCart = localStorage.getItem("rocketpets-cart");
-    if (savedCart) {
-      try {
-        setCartPets(JSON.parse(savedCart));
-      } catch (error) {
-        console.error("erro ao carregar carrinho:", error);
-      }
-    }
-  }, []);
-  useEffect(() => {
     localStorage.setItem("rocketpets-cart", JSON.stringify(cartPets));
   }, [cartPets]);
   function addToCart(id: number) {

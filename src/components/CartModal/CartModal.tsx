@@ -4,6 +4,7 @@ import {
   CloseCartButton,
   TextContainer,
   FinishOrderButton,
+  CartTotalText,
 } from "./styles";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 import { CartCard } from "../CartCard";
@@ -46,9 +47,15 @@ export function CartModal({ setShowConfirmation }: CartModalProps) {
           <CartCard key={pet.id} {...pet} />
         ))}
         {cartPets.length > 0 && (
-          <FinishOrderButton onClick={finishOrder}>
-            finalizar compra
-          </FinishOrderButton>
+          <>
+            <CartTotalText>
+              total: R$
+              {cartItems.reduce((sum, pet) => sum + pet.price, 0).toFixed(2)}
+            </CartTotalText>
+            <FinishOrderButton onClick={finishOrder}>
+              finalizar compra
+            </FinishOrderButton>
+          </>
         )}
       </CartContainer>
     </>
