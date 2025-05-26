@@ -27,10 +27,13 @@ O objetivo foi criar uma aplicação web moderna utilizando **React**, **TypeScr
 
 ## Como rodar o projeto localmente
 
-1. Clone o repositório:
+1. Clone e acesse o repositório:
 
 ```bash
 git clone https://github.com/mariabdma/rocketpets.git
+```
+
+```bash
 cd rocketpets
 ```
 
