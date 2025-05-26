@@ -1,18 +1,15 @@
 import "./App.css";
-import { useState } from "react";
-import { Header } from "./components/Header";
+import { Header } from "./components";
+import { Home } from "./pages";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [cartVisible, setCartVisible] = useState(false);
-
-  const toggleCart = () => {
-    setCartVisible((prev) => !prev);
-  };
-
   return (
     <>
-      <Header cartItemCount={3} onCartClick={toggleCart} />
-      {cartVisible && <div>🛒 Carrinho aberto aqui</div>}
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
   );
 }

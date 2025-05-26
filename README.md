@@ -1,54 +1,69 @@
-# React + TypeScript + Vite
+# RocketPets
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o **RocketPets**, um projeto FrontEnd desenvolvido para o programa **RocketLab 2025**, em parceria com a **Visagio**.
 
-Currently, two official plugins are available:
+O objetivo foi criar uma aplicação web moderna utilizando **React**, **TypeScript**, **Vite** e **styled-components**, simulando uma pequena loja online de pets com funcionalidades completas como carrinho persistente, sistema de filtros, modais e gerenciamento de estado via contextos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+## Tecnologias utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [styled-components](https://styled-components.com/)
+- React Icons
+- React Router DOM
+- LocalStorage API
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+
+## Funcionalidades principais
+
+- Adicionar/remover pets do carrinho
+- Visualizar o carrinho e “finalizar compra”
+- Filtros por espécie com modal dedicado
+- Estado persistente mesmo após atualizar a página (via localStorage)
+- Interface responsiva
+  
+
+## Como rodar o projeto localmente
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/mariabdma/rocketpets.git
+cd rocketpets
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Instale as dependências:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. Inicie o servidor de desenvolvimento:
+```bash
+npm run dev
+```
+
+4. Acesse no navegador:
+```bash
+http://localhost:5173
+```
+
+
+## Estrutura do repositório
+```bash
+src/
+│
+├── components/        # Componentes reutilizáveis (Header, Modal, CartCard etc.)
+├── context/           # Contextos (ShoppingCart, Filter)
+├── data/              # Dados estáticos dos pets
+├── pages/             # Páginas principais (Home)
+├── utils/             # Funções utilitárias (ex: formatAge)
+```
+
+
+## Contato
+Email: mariabdma@gmail.com
+
+LinkedIn: [linkedin.com/in/mariabdma](https://linkedin.com/in/mariabdma)
